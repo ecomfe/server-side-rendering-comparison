@@ -8,6 +8,7 @@ module.exports = {
     'server.marko': './assets/src/app/index.marko',
     'server.react': './assets/src/server.react.js',
     'server.rax': './assets/src/server.rax.js',
+    'server.san': './assets/src/server.san.js',
     'server.preact': './assets/src/server.preact.js',
     'server.vue': './assets/src/server.vue.js',
     'server.inferno': './assets/src/server.inferno.js'
@@ -35,6 +36,14 @@ module.exports = {
               'plugins': [
                   'inferno'
               ]
+          }
+      },
+      {
+          test: /\.san\.js?$/,
+          exclude: /node_modules/,
+          loader: 'babel',
+          query: {
+              'presets': ['es2015', 'stage-0']
           }
       },
       {

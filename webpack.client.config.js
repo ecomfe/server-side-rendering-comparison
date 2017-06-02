@@ -8,6 +8,7 @@ module.exports = {
     'client.marko': './assets/src/app/index.marko',
     'client.react': './assets/src/client.react.js',
     'client.rax': './assets/src/client.rax.js',
+    'client.san': './assets/src/client.san.js',
     'client.preact': './assets/src/client.preact.js',
     'client.vue': './assets/src/client.vue.js',
     'client.inferno': './assets/src/client.inferno.js'
@@ -25,6 +26,14 @@ module.exports = {
         query: {
           'presets': ['es2015', 'react', 'stage-0']
         }
+      },
+      {
+          test: /\.san\.js?$/,
+          exclude: /node_modules/,
+          loader: 'babel',
+          query: {
+              'presets': ['es2015', 'stage-0']
+          }
       },
       {
           test: /\.inferno\.js?$/,

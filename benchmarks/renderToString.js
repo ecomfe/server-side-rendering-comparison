@@ -7,6 +7,7 @@
 const Benchmark = require('benchmark');
 
 const xtpl = require('xtpl');
+const san = require('san');
 const Rax = require('rax');
 const raxRenderToString = require('rax-server-renderer').renderToString;
 const React = require('react');
@@ -21,6 +22,7 @@ const {render} = require("rapscallion");
 
 const ReactApp = require('../assets/build/server.react.bundle').default;
 const RaxApp = require('../assets/build/server.rax.bundle').default;
+const SanApp = require('../assets/build/server.san.bundle').default;
 const VueApp = require('../assets/build/server.vue.bundle').default;
 const PreactApp = require('../assets/build/server.preact.bundle').default;
 const MarkoApp = require('../assets/build/server.marko.bundle');
@@ -45,6 +47,8 @@ const vueVm = new Vue({
   }
 });
 
+const sanAppRenderer = san.compileToRenderer(SanApp);
+
 const suite = new Benchmark.Suite;
 
 suite
@@ -53,6 +57,9 @@ suite
   })
   .add('Rax#renderToString', function() {
     raxRenderToString(Rax.createElement(RaxApp, data));
+  })
+  .add('San#render', function() {
+    sanAppRenderer(data)
   })
   .add('Inferno#renderToString', function() {
     InfernoServer.renderToString(infernoCreateElement(InfernoApp, data));

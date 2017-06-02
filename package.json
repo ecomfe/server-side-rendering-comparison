@@ -39,6 +39,7 @@
     "rax-server-renderer": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "san": "^3.1.0-beta.2",
     "vue": "latest",
     "vue-server-renderer": "latest",
     "xtemplate": "^4.6.0",
